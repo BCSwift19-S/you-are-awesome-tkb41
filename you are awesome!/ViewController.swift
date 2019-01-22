@@ -20,18 +20,15 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func showMessagePressed(_ sender: UIButton) {print("The button was clicked")
-        messageLabel.text = "you are Awsome!"
-        messageLabel.textColor = UIColor.red
-        
-        
-        
+    @IBAction func showMessagePressed(_ sender: UIButton) {
+        if messageLabel.text == "you are awesome" {
+            messageLabel.text = "you are great"
+        } else if messageLabel.text == "you are great" {
+            messageLabel.text = "you are amazing"
+        } else {
+            messageLabel.text = "you are awesome"
+        }
     }
-    @IBAction func showAnotherMessagePressed(_ sender: Any) {
-        messageLabel.text = "you are great!"
-        messageLabel.textColor = UIColor.blue
-        
-    }
-    
+
 }
 
