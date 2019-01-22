@@ -15,18 +15,20 @@ class ViewController: UIViewController {
     // Code below executes when the app's view first loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("the view loaded!")
-        
         
     }
 
     @IBAction func showMessagePressed(_ sender: UIButton) {
-        if messageLabel.text == "you are awesome" {
-            messageLabel.text = "you are great"
-        } else if messageLabel.text == "you are great" {
-            messageLabel.text = "you are amazing"
+        let message1 = "you are awesome"
+        let message2 = "you are great"
+        let message3 = "you are amazing"
+        
+        if messageLabel.text == message1 {
+            messageLabel.text = message2
+        } else if messageLabel.text == message2 {
+            messageLabel.text = message3
         } else {
-            messageLabel.text = "you are awesome"
+            messageLabel.text = message1
         }
     }
 
