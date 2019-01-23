@@ -39,6 +39,7 @@ class ViewController: UIViewController {
             index = index + 1
         }
         
+        {}
         
 //        let message1 = "you are awesome"
 //        let message2 = "you are great"
