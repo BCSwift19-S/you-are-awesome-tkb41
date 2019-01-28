@@ -32,6 +32,7 @@ class ViewController: UIViewController {
             newIndex = Int.random(in: 0 ..< maxValue )
         } while lastNumber == newIndex
         return newIndex
+    }
 
         func playSound(soundName: String, audioPlayer: inout AVAudioPlayer ) {
         //can we load in a file with soundName
@@ -51,23 +52,24 @@ class ViewController: UIViewController {
         }
     }
     
-         @IBAction func soundSwitchPressed(_ sender: Any) {
-            if soundSwitch.isOn == false && soundIndex != -1 {
-                awesomePlayer.stop()
-            }
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        if soundSwitch.isOn == false && soundIndex != -1 {
+            awesomePlayer.stop()
         }
-        @IBAction func showMessagePressed(_ sender: UIButton) {
-        
-          let messages = ["you are awesome",
+    }
+  
+    
+    @IBAction func showMessagePressed(_ sender: UIButton) {
+        let messages = ["you are awesome",
                         "you are great",
                         "you are fantastic",
                         "when the genius bar needs help, they call you!",
                         "you brighten my day",
                         "you make me smile",
                         "I cant wait to download your app!"]
-
+        
         //Showing messages code
-       index = nonReapeatingRandom(lastNumber: index, maxValue: messages.count)
+        index = nonReapeatingRandom(lastNumber: index, maxValue: messages.count)
         messageLabel.text = messages[index]
         
         //show an image
@@ -77,14 +79,16 @@ class ViewController: UIViewController {
         //get a random number to yse in our soundName file
         soundIndex = nonReapeatingRandom(lastNumber: soundIndex, maxValue: numberOfSounds)
         
-//            play sound
+        //            play sound
         let soundName = "sound\(soundIndex)"
-           
-//            if soundSwitch.isOn == true {
-            if soundSwitch.isOn {
+        
+        //            if soundSwitch.isOn == true {
+        if soundSwitch.isOn {
             playSound(soundName: soundName, audioPlayer: &awesomePlayer)
             
         }
+    }
+
         
         
         
@@ -121,8 +125,3 @@ class ViewController: UIViewController {
 //        }
         
 
-
-
-}
-}
-}
