@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var awesomeImage: UIImageView!
+    @IBOutlet weak var soundSwitch: UISwitch!
     
     var awesomePlayer = AVAudioPlayer()
     var index = -1
@@ -20,13 +21,9 @@ class ViewController: UIViewController {
     var soundIndex = -1
     let numberOfImages = 10
     let numberOfSounds = 4
-    
-   
-    
     // Code below executes when the app's view first loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     func nonReapeatingRandom(lastNumber: Int, maxValue: Int) -> Int {
@@ -36,13 +33,13 @@ class ViewController: UIViewController {
         } while lastNumber == newIndex
         return newIndex
 
-    func playSound(soundName: String ) {
+        func playSound(soundName: String, audioPlayer: inout AVAudioPlayer ) {
         //can we load in a file with soundName
         if let sound = NSDataAsset(name: soundName) {
             // check if sound.data is a sound file
             do {
-                try awesomePlayer = AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
+                try audioPlayer = AVAudioPlayer(data: sound.data)
+                audioPlayer.play()
                 
             } catch {
                 // if sound.data is nota valid audio file
@@ -50,14 +47,18 @@ class ViewController: UIViewController {
             }
         } else {
             // if reading the NSdataAssset doesnt work tell the developer
-            print("ERROR: file \(soundName) didnt load")
-            
+           print("ERROR: file \(soundName) didnt load")
         }
     }
     
-    @IBAction func showMessagePressed(_ sender: UIButton) {
+         @IBAction func soundSwitchPressed(_ sender: Any) {
+            if soundSwitch.isOn == false && soundIndex != -1 {
+                awesomePlayer.stop()
+            }
+        }
+        @IBAction func showMessagePressed(_ sender: UIButton) {
         
-        let messages = ["you are awesome",
+          let messages = ["you are awesome",
                         "you are great",
                         "you are fantastic",
                         "when the genius bar needs help, they call you!",
@@ -78,7 +79,10 @@ class ViewController: UIViewController {
         
 //            play sound
         let soundName = "sound\(soundIndex)"
-        playSound(soundName: soundName)
+           
+//            if soundSwitch.isOn == true {
+            if soundSwitch.isOn {
+            playSound(soundName: soundName, audioPlayer: &awesomePlayer)
             
         }
         
@@ -119,4 +123,6 @@ class ViewController: UIViewController {
 
 
 
+}
+}
 }
