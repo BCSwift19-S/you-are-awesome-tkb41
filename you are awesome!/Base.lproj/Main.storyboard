@@ -60,6 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="awesomeImage" destination="Lbv-Nz-Dsm" id="NY9-Pf-ck9"/>
                         <outlet property="messageLabel" destination="zoS-1B-RWK" id="gYJ-hJ-dDJ"/>
                     </connections>
                 </viewController>
